@@ -14,11 +14,12 @@
 .app-container {
   min-height: 100vh;
   background-color: rgba(238, 130, 238, 0.538);
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 
   .navigation {
     .list-container {
       @include flex(space-between, row, center);
-      border-bottom: 1px solid gray;
+      border-bottom: 2px dotted gray;
       list-style: none;
       padding: 20px 40px;
       div {
@@ -31,6 +32,9 @@
       li {
         font-size: 24px;
         color: gray;
+        &.active {
+          color: white;
+        }
       }
     }
   }
