@@ -1,6 +1,6 @@
 import Home from "./Home";
 import Numbers from "./Numbers";
-import Users from "./Users";
+import UsersList from "./UsersList";
 import Login from "./Login";
 import Register from "./Register";
 import { useContext } from "react";
@@ -15,7 +15,7 @@ function Routes() {
     case "numbers":
       return <Numbers></Numbers>;
     case "users":
-      return <Users></Users>;
+      return <UsersList></UsersList>;
     case "login":
       return <Login></Login>;
     case "register":
