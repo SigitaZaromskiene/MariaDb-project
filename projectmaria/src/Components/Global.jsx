@@ -6,7 +6,11 @@ export const Global = createContext();
 export const GlobalProvider = ({ children }) => {
   const [route, setRoute] = useState("home");
 
+  // users
+
   const [usersList, setUsersList] = useState(null);
+
+  // messages
 
   const [message, setErrorMessage] = useState(null);
 

@@ -11,6 +11,7 @@ function UsersList() {
   const { usersList, setUsersList, setErrorMessage, message } =
     useContext(Global);
 
+  console.log(usersList);
   //   useEffect(() => {
   //     getUsersList();
   //   }, []);
@@ -34,7 +35,21 @@ function UsersList() {
       .get(URL)
       .then((res) => setUsersList(res.data))
       .catch((err) => setErrorMessage(err.message));
-  }, [usersList]);
+  }, []);
+
+  const sortHandler = () => {
+    setUsersList((li) => [...li].sort((a, b) => a.name.localeCompare(b.name)));
+  };
+
+  const filterAdmin = () => {
+    setUsersList((li) =>
+      li.map((li) => (li.role === "admin" ? { ...li } : ""))
+    );
+  };
+
+  const showAllUsers = () => {
+    setUsersList((li) => [...li]);
+  };
 
   return (
     <div className="users-list-page">
@@ -48,14 +63,16 @@ function UsersList() {
           usersList.map((li) => (
             <li key={li.id} className="user">
               <p>{li.name}</p>
+              <p>{li.role}</p>
               <Button text="Delete"></Button>
             </li>
           ))
         )}
       </div>
       <div className="flex">
-        <BigButtons text="Sort"></BigButtons>
-        <BigButtons text="Filter admin"></BigButtons>
+        <BigButtons action={sortHandler} text="Sort"></BigButtons>
+        <BigButtons action={filterAdmin} text="Filter admin"></BigButtons>
+        <BigButtons action={showAllUsers} text="Show all"></BigButtons>
       </div>
     </div>
   );
