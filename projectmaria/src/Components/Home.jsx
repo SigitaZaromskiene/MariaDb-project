@@ -1,5 +1,5 @@
 function Home() {
-  return <div>HOME</div>;
+  return <div className="img"></div>;
 }
 
 export default Home;

@@ -13,6 +13,7 @@
 
 .app-container {
   min-height: 100vh;
+  min-width: 100%;
   background-color: rgba(238, 130, 238, 0.538);
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 
@@ -35,6 +36,45 @@
         &.active {
           color: white;
         }
+
+        .red {
+          color: red;
+        }
+      }
+    }
+  }
+
+  .img {
+    background-image: url(./img/number.jpg);
+    background-size: cover;
+    height: 100vh;
+  }
+
+  .number-container {
+    @extend %display;
+    margin-top: 200px;
+
+    .lucky-number-form {
+      height: 200px;
+      border: 1px solid black;
+      background-color: white;
+      padding: 25px;
+      @include flex(center, column, space-between);
+      gap: 30px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+    .lucky-color-form {
+      border: 1px solid black;
+      width: 230px;
+      height: 60px;
+      font-size: 18px;
+      background-color: white;
+      padding: 5px;
+      cursor: pointer;
+
+      option {
+        padding: 5px;
       }
     }
   }
