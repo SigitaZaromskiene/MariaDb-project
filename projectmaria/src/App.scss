@@ -108,7 +108,7 @@
 
   .users-list-page {
     margin-top: 50px;
-    @extend %display;
+    @include flex(center, column, center);
 
     .users-container {
       border: 1px solid black;
@@ -121,6 +121,7 @@
         border: 1px solid black;
         padding: 10px;
         @include flex(space-between, row, center);
+        margin-bottom: 20px;
       }
     }
   }
@@ -137,14 +138,14 @@
 
     .border {
       border-bottom: 1px solid black;
-      margin-bottom: 40px;
+      margin-bottom: 20px;
     }
 
     .login-form {
       border: 1px solid black;
       background-color: white;
       height: 300px;
-      width: 400px;
+      width: 450px;
 
       input {
         height: 30px;
@@ -164,6 +165,45 @@
 
   &:hover {
     background-color: rgba(128, 128, 128, 0.326);
+    border: 1px solid black;
+  }
+}
+
+.error-message-container {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  min-width: 100vh;
+  min-height: 100%;
+  background-color: rgba(128, 128, 128, 0.929);
+  @extend %display;
+  color: red;
+  font-size: 48px;
+
+  .message {
+    border: 1px solid red;
+    padding: 15px;
+  }
+}
+
+.flex {
+  @extend %display;
+  gap: 25px;
+  margin-top: 25px;
+}
+
+.big-btn {
+  height: 50px;
+  width: 150px;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: rgba(255, 255, 0, 0.384);
+  border: none;
+  font-size: 20px;
+  border: 1px solid transparent;
+  &:hover {
+    background-color: white;
     border: 1px solid black;
   }
 }

@@ -15,7 +15,7 @@ const con = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "",
-  database: "mysqlnewproject",
+  database: "mariadb",
 });
 
 app.use(
@@ -31,6 +31,18 @@ app.use(
   })
 );
 app.use(express.json());
+
+app.get("/users", (req, res) => {
+  const sql = `
+  SELECT id, name
+  FROM users
+ 
+  `;
+  con.query(sql, (err, result) => {
+    if (err) throw err;
+    res.json(result);
+  });
+});
 
 app.listen(port, () => {
   console.log(`LN is on port number: ${port}`);
