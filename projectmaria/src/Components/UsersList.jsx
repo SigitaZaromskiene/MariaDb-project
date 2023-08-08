@@ -43,12 +43,20 @@ function UsersList() {
 
   const filterAdmin = () => {
     setUsersList((li) =>
-      li.map((li) => (li.role === "admin" ? { ...li } : ""))
+      li.map((li) =>
+        li.role === "admin"
+          ? { ...li, showUser: true }
+          : { ...li, showUser: false }
+      )
     );
   };
 
   const showAllUsers = () => {
-    setUsersList((li) => [...li]);
+    setUsersList((li) => li.map((li) => ({ ...li, showUser: true })));
+  };
+
+  const sortDefaultHandler = () => {
+    setUsersList((li) => [...li].sort((a, b) => a.row - b.row));
   };
 
   return (
@@ -60,17 +68,23 @@ function UsersList() {
             message={message}
           ></ErrorMessage>
         ) : (
-          usersList.map((li) => (
-            <li key={li.id} className="user">
-              <p>{li.name}</p>
-              <p>{li.role}</p>
-              <Button text="Delete"></Button>
-            </li>
-          ))
+          usersList.map((li) =>
+            li.showUser ? (
+              <li key={li.id} className="user">
+                <p>{li.name}</p>
+                <p>{li.role}</p>
+                <Button text="Delete"></Button>
+              </li>
+            ) : null
+          )
         )}
       </div>
       <div className="flex">
         <BigButtons action={sortHandler} text="Sort"></BigButtons>
+        <BigButtons
+          action={sortDefaultHandler}
+          text="Default sort"
+        ></BigButtons>
         <BigButtons action={filterAdmin} text="Filter admin"></BigButtons>
         <BigButtons action={showAllUsers} text="Show all"></BigButtons>
       </div>

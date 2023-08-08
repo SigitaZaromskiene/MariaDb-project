@@ -34,7 +34,7 @@ app.use(express.json());
 
 app.get("/users", (req, res) => {
   const sql = `
-  SELECT id, name, role, showUser
+  SELECT id, name, role, showUser, row
   FROM users
  
   `;
