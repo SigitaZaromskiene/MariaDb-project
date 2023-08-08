@@ -1,7 +1,4 @@
-import { useState } from "react";
-
-function SelectNumberForm() {
-  const [luckyNumber, setLuckyNumber] = useState(0);
+function SelectNumberForm({ luckyNumber, setLuckyNumber }) {
   return (
     <form className="lucky-number-form">
       <h4>Choose your lucky number</h4>

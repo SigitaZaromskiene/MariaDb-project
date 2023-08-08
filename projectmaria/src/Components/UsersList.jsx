@@ -8,10 +8,9 @@ import BigButtons from "./BigButtons";
 const URL = "http://localhost:3004/users";
 
 function UsersList() {
-  const { usersList, setUsersList, setErrorMessage, message } =
+  const { usersList, setUsersList, setErrorMessage, message, lastUpdate } =
     useContext(Global);
 
-  console.log(usersList);
   //   useEffect(() => {
   //     getUsersList();
   //   }, []);
