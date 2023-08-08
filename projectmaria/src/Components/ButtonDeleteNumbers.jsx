@@ -1,16 +1,9 @@
 import { Global } from "./Global";
-import { useContext, useEffect } from "react";
-import axios from "axios";
+import { useContext } from "react";
 
 function ButtonDeleteNumbers({ li }) {
-  const {
-    setDeleteNumber,
-    destroyNumber,
-    setErrorMessage,
-    setNumbersResponse,
-    setDeleteResponse,
-    setLastUpdate,
-  } = useContext(Global);
+  const { setDeleteNumber } = useContext(Global);
+
   const deleteNumberHandler = () => {
     setDeleteNumber(li);
   };

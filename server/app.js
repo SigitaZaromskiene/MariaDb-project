@@ -79,6 +79,18 @@ app.delete("/numbers/:id", (req, res) => {
     res.json({});
   });
 });
+
+app.delete("/users/:id", (req, res) => {
+  const sql = `
+        DELETE FROM users
+        WHERE id = ?
+    `;
+  con.query(sql, [req.params.id], (err) => {
+    if (err) throw err;
+    res.json({});
+  });
+});
+
 app.listen(port, () => {
   console.log(`LN is on port number: ${port}`);
 });

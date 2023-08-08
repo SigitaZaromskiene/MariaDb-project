@@ -4,12 +4,19 @@ import { Global } from "./Global";
 import ErrorMessage from "./ErrorMessage";
 import axios from "axios";
 import BigButtons from "./BigButtons";
+import ButtonDeleteUser from "./ButtonDeleteUser";
 
 const URL = "http://localhost:3004/users";
 
 function UsersList() {
-  const { usersList, setUsersList, setErrorMessage, message, lastUpdate } =
-    useContext(Global);
+  const {
+    usersList,
+    setUsersList,
+    setErrorMessage,
+    message,
+    lastUpdate,
+    setDestroyUser,
+  } = useContext(Global);
 
   //   useEffect(() => {
   //     getUsersList();
@@ -34,7 +41,7 @@ function UsersList() {
       .get(URL)
       .then((res) => setUsersList(res.data))
       .catch((err) => setErrorMessage(err.message));
-  }, []);
+  }, [lastUpdate]);
 
   const sortHandler = () => {
     setUsersList((li) => [...li].sort((a, b) => a.name.localeCompare(b.name)));
@@ -72,7 +79,7 @@ function UsersList() {
               <li key={li.id} className="user">
                 <p>{li.name}</p>
                 <p>{li.role}</p>
-                <Button text="Delete"></Button>
+                <ButtonDeleteUser li={li}></ButtonDeleteUser>
               </li>
             ) : null
           )

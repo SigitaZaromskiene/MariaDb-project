@@ -14,8 +14,6 @@ function NumbersList() {
     numbersResponse,
     setNumbersResponse,
     lastUpdate,
-    numbersList,
-    setNumbersList,
   } = useContext(Global);
 
   useEffect(() => {

@@ -5,6 +5,7 @@ import axios from "axios";
 export const Global = createContext();
 
 const URL = "http://localhost:3004/numbers";
+const URLUSER = "http://localhost:3004/users";
 
 export const GlobalProvider = ({ children }) => {
   const [route, setRoute] = useState("home");
@@ -14,6 +15,9 @@ export const GlobalProvider = ({ children }) => {
   // users
 
   const [usersList, setUsersList] = useState(null);
+  const [destroyUser, setDestroyUser] = useState(null);
+
+  console.log(destroyUser);
 
   // messages
 
@@ -36,6 +40,16 @@ export const GlobalProvider = ({ children }) => {
     });
   }, [destroyNumber]);
 
+  useEffect(() => {
+    if (null === destroyUser) {
+      return;
+    }
+    axios.delete(URLUSER + "/" + destroyUser.id).then((res) => {
+      console.log(res.data);
+      setLastUpdate(Date.now());
+    });
+  }, [destroyUser]);
+
   return (
     <Global.Provider
       value={{
@@ -55,6 +69,7 @@ export const GlobalProvider = ({ children }) => {
         setNumbersResponse,
         destroyNumber,
         setDeleteNumber,
+        setDestroyUser,
       }}
     >
       {children}
