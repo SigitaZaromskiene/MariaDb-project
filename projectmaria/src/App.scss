@@ -220,3 +220,32 @@
     border: 1px solid black;
   }
 }
+
+.edit-modal-container {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  min-width: 100vh;
+  min-height: 100%;
+  background-color: rgba(128, 128, 128, 0.929);
+  @extend %display;
+  color: red;
+  font-size: 48px;
+  .edit-modal-form {
+    border: 1px solid black;
+    width: 250px;
+    height: 185px;
+    font-size: 18px;
+    background-color: white;
+    padding: 5px;
+    cursor: pointer;
+    @include flex(center, column, center);
+    gap: 20px;
+
+    .btn-container {
+      @include flex(center, row, center);
+      gap: 20px;
+    }
+  }
+}

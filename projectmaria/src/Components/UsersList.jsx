@@ -9,14 +9,8 @@ import ButtonDeleteUser from "./ButtonDeleteUser";
 const URL = "http://localhost:3004/users";
 
 function UsersList() {
-  const {
-    usersList,
-    setUsersList,
-    setErrorMessage,
-    message,
-    lastUpdate,
-    setDestroyUser,
-  } = useContext(Global);
+  const { usersList, setUsersList, setErrorMessage, message, lastUpdate } =
+    useContext(Global);
 
   //   useEffect(() => {
   //     getUsersList();

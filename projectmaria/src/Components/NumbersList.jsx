@@ -4,6 +4,7 @@ import { Global } from "./Global";
 import ErrorMessage from "./ErrorMessage";
 import axios from "axios";
 import ButtonDeleteNumbers from "./ButtonDeleteNumbers";
+import EditModal from "./EditModal";
 
 const URL = "http://localhost:3004/numbers";
 
@@ -14,6 +15,8 @@ function NumbersList() {
     numbersResponse,
     setNumbersResponse,
     lastUpdate,
+    editModal,
+    setEditNumberModal,
   } = useContext(Global);
 
   useEffect(() => {
@@ -33,7 +36,13 @@ function NumbersList() {
             <p>{li.number}</p>
             <div className="button-flex">
               <ButtonDeleteNumbers li={li}></ButtonDeleteNumbers>
-              <Button text="Change number"></Button>
+              <Button
+                action={() => setEditNumberModal(li)}
+                text="Change number"
+              ></Button>
+              {editModal && li.id === editModal.id ? (
+                <EditModal li={li} />
+              ) : null}
             </div>
           </li>
         ))

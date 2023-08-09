@@ -91,6 +91,18 @@ app.delete("/users/:id", (req, res) => {
   });
 });
 
+app.put("/numbers/:id", (req, res) => {
+  const sql = `
+        UPDATE numbers
+        SET number = ?
+        WHERE id = ?
+    `;
+  con.query(sql, [req.body.number, req.params.id], (err) => {
+    if (err) throw err;
+    res.json({});
+  });
+});
+
 app.listen(port, () => {
   console.log(`LN is on port number: ${port}`);
 });

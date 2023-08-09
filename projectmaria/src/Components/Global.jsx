@@ -17,8 +17,6 @@ export const GlobalProvider = ({ children }) => {
   const [usersList, setUsersList] = useState(null);
   const [destroyUser, setDestroyUser] = useState(null);
 
-  console.log(destroyUser);
-
   // messages
 
   const [message, setErrorMessage] = useState(null);
@@ -29,6 +27,8 @@ export const GlobalProvider = ({ children }) => {
   const [numbersList, setNumbersList] = useState(null);
   const [numbersResponse, setNumbersResponse] = useState(null);
   const [destroyNumber, setDeleteNumber] = useState(null);
+  const [editNumber, setEditNumber] = useState(null);
+  const [editModal, setEditNumberModal] = useState(null);
 
   useEffect(() => {
     if (null === destroyNumber) {
@@ -50,6 +50,25 @@ export const GlobalProvider = ({ children }) => {
     });
   }, [destroyUser]);
 
+  useEffect(() => {
+    if (null === editNumber) {
+      return;
+    }
+    axios
+      .put(URL + "/" + editNumber.id, { number: editNumber.number })
+      .then((res) => {
+        console.log(res.data);
+        setLastUpdate(Date.now());
+      });
+  }, [editNumber]);
+
+  useEffect(() => {
+    if (createData === null) {
+      return;
+    }
+    setLastUpdate(Date.now());
+  }, [createData]);
+
   return (
     <Global.Provider
       value={{
@@ -70,6 +89,10 @@ export const GlobalProvider = ({ children }) => {
         destroyNumber,
         setDeleteNumber,
         setDestroyUser,
+        editNumber,
+        setEditNumber,
+        editModal,
+        setEditNumberModal,
       }}
     >
       {children}
