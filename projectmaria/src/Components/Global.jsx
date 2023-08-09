@@ -6,6 +6,7 @@ export const Global = createContext();
 
 const URL = "http://localhost:3004/numbers";
 const URLUSER = "http://localhost:3004/users";
+const URLLOGIN = "http://localhost:3004/login";
 
 export const GlobalProvider = ({ children }) => {
   const [route, setRoute] = useState("home");
@@ -16,6 +17,9 @@ export const GlobalProvider = ({ children }) => {
 
   const [usersList, setUsersList] = useState(null);
   const [destroyUser, setDestroyUser] = useState(null);
+
+  const [loggedName, setLoggedName] = useState("");
+  const [logged, setLogged] = useState(null);
 
   // messages
 
@@ -69,6 +73,19 @@ export const GlobalProvider = ({ children }) => {
     setLastUpdate(Date.now());
   }, [createData]);
 
+  // axios
+  //   .get(URLLOGIN, { withCredentials: true })
+  //   .then((res) => {
+  //     console.log(res);
+  //     setLogged(true);
+  //     setLoggedName(res.data.name);
+  //   })
+  //   .catch((err) => setErrorMessage(err.message));
+
+  // useEffect(() => {
+  //   setLogged(null);
+  // }, [route]);
+
   return (
     <Global.Provider
       value={{
@@ -93,6 +110,10 @@ export const GlobalProvider = ({ children }) => {
         setEditNumber,
         editModal,
         setEditNumberModal,
+        setLoggedName,
+        loggedName,
+        logged,
+        setLogged,
       }}
     >
       {children}

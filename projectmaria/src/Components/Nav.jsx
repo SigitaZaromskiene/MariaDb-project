@@ -1,8 +1,9 @@
 import { useContext } from "react";
 import { Global } from "./Global";
+import Logout from "./Logout";
 
 function Nav() {
-  const { setRoute, route } = useContext(Global);
+  const { setRoute, route, loggedName, logged } = useContext(Global);
   return (
     <div className="navigation">
       <div className="list-container">
@@ -27,18 +28,32 @@ function Nav() {
           </li>
         </div>
         <div>
-          <li
-            className={route === "login" ? "active" : null}
-            onClick={() => setRoute("login")}
-          >
-            Login
-          </li>
-          <li
-            className={route === "register" ? "active" : null}
-            onClick={() => setRoute("register")}
-          >
-            Register
-          </li>
+          {!logged ? (
+            <>
+              <li
+                className={route === "login" ? "active" : null}
+                onClick={() => setRoute("login")}
+              >
+                Login
+              </li>
+              <li
+                className={route === "register" ? "active" : null}
+                onClick={() => setRoute("register")}
+              >
+                Register
+              </li>{" "}
+            </>
+          ) : (
+            <>
+              <li>Hello, {loggedName}</li>
+              <li
+                className={route === "logout" ? "active" : null}
+                onClick={() => setRoute("logout")}
+              >
+                <Logout />
+              </li>{" "}
+            </>
+          )}
         </div>
       </div>
     </div>
