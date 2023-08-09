@@ -69,6 +69,36 @@ app.post("/numbers", (req, res) => {
   });
 });
 
+app.post("/register", (req, res) => {
+  const showUser = "true";
+  const role = "manager";
+  const session = uuidv4();
+  const sql = `
+  INSERT INTO users (session, name, psw, role, showUser)
+  VALUES (?, ?, ?, ?, ?)
+
+  `;
+
+  con.query(
+    sql,
+    [session, req.body.name, md5(req.body.psw), role, showUser],
+    (err, result) => {
+      if (err) throw err;
+      if (result.affectedRows) {
+        res.cookie("usersSession", session);
+        res.json({
+          status: "ok",
+          name: req.body.name,
+        });
+      } else {
+        res.json({
+          status: "error",
+        });
+      }
+    }
+  );
+});
+
 app.delete("/numbers/:id", (req, res) => {
   const sql = `
         DELETE FROM numbers

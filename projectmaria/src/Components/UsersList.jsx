@@ -32,7 +32,7 @@ function UsersList() {
 
   useEffect(() => {
     axios
-      .get(URL)
+      .get(URL, { withCredentials: true })
       .then((res) => setUsersList(res.data))
       .catch((err) => setErrorMessage(err.message));
   }, [lastUpdate]);
