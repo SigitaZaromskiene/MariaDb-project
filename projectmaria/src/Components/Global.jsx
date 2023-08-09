@@ -6,7 +6,6 @@ export const Global = createContext();
 
 const URL = "http://localhost:3004/numbers";
 const URLUSER = "http://localhost:3004/users";
-const URLLOGIN = "http://localhost:3004/login";
 
 export const GlobalProvider = ({ children }) => {
   const [route, setRoute] = useState("home");
@@ -73,18 +72,19 @@ export const GlobalProvider = ({ children }) => {
     setLastUpdate(Date.now());
   }, [createData]);
 
-  // axios
-  //   .get(URLLOGIN, { withCredentials: true })
-  //   .then((res) => {
-  //     console.log(res);
-  //     setLogged(true);
-  //     setLoggedName(res.data.name);
-  //   })
-  //   .catch((err) => setErrorMessage(err.message));
-
-  // useEffect(() => {
-  //   setLogged(null);
-  // }, [route]);
+  useEffect(() => {
+    axios
+      .get("http://localhost:3004/login", { withCredentials: true })
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.status === "ok") {
+          setLogged(true);
+          setLoggedName(res.data.name);
+        } else {
+          setLogged(false);
+        }
+      });
+  }, []);
 
   return (
     <Global.Provider

@@ -5,8 +5,7 @@ import { Global } from "./Global";
 const URL = "http://localhost:3004/logout";
 
 function Logout() {
-  const { setRoute, setLogged, setLoggedName, setErrorMessage } =
-    useContext(Global);
+  const { setRoute, setLogged, setLoggedName } = useContext(Global);
 
   const logoutHandler = () => {
     axios.post(URL, {}, { withCredentials: true }).then((res) => {

@@ -5,7 +5,7 @@ import Login from "./Login";
 import Register from "./Register";
 import { useContext } from "react";
 import { Global } from "./Global";
-import Logout from "./Logout";
+
 
 function Routes() {
   const { route } = useContext(Global);
