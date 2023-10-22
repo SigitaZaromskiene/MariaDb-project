@@ -5,12 +5,21 @@ This project is for educational porpuses only.
 
 ## 🎯 Project features/goals
 
--   Using MariaDB 
--   Using useContext, useState, useEffect
--   Using controlled forms
--   Practising scss
--   Practising post, get, delete and put methods
--   Login, register and logout features
+🌐 Database-Powered: MariaDB is at the core of this project, ensuring efficient data storage and retrieval, data integrity, and scalability.
+
+🛤️ Route Navigation: With well-defined routes, users can seamlessly navigate through various sections of the application, making their journey intuitive and enjoyable.
+
+🔒 User Authentication:
+
+Login: Users can securely access their accounts with the login feature, ensuring data protection.
+Register: New users can easily create accounts to explore the full functionality of the application.
+Logout: Users can log out to maintain data security and privacy.
+
+📊 Key Features:
+
+🚀 Dynamic Routes: Utilizing React Router, my project enables dynamic route management, making it easy to add and update routes.
+🛡️ User Authentication: The authentication system is designed to keep user data secure and accessible only to authorized individuals.
+💼 Database Integration: MariaDB ensures efficient data management, providing a robust foundation for the application's functionality.
 
 
 # Getting Started with Create React App
